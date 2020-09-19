@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pop-up</title>
+</head>
+
+<body>
+    <style>
+        .modal-container {
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            z-index: 1;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-container.mostrar {
+            display: flex;
+        }
+        
+        .modal {
+            position: relative;
+            background: white;
+            width: 60%;
+            min-width: 300px;
+            padding: 40px;
+            border: 5px solid gray;
+            box-shadow: 00 0 10px rgb(73, 72, 72);
+        }
+        
+        @keyframes modal {
+            from {
+                opacity: 0;
+                transform: translate3d(0, -60px, 0);
+            }
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+        
+        .mostrar .modal {
+            animation: modal .3s;
+        }
+        
+        .fechar {
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 4px solid white;
+            background-color: teal;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.3);
+        }
+    </style>
+
+    <button class="logo">Adicionar</button>
+
+    <div id="modal-promocao" class="modal-container">
+        <div class="modal">
+            <h3 class="subtítulo">Cadastre-se na newsletter</h3>
+            <form action="">
+                <button class="fechar">X</button>
+                <input type="text" class="input" placeholder="Email">
+                <input type="button" class="button" value="Cadastrar">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function iniciaModal(modoID) {
+            const modal = document.getElementById(modoID);
+            modal.classList.add('mostrar');
+            modal.addEventListener('click', function(evento) {
+                if (evento.target.id == 'fechar') {
+                    modal.classList.remove('mostrar');
+                }
+            })
+        }
+
+        const logo = document.querySelector('.logo')
+        logo.addEventListener('click', function() {
+            iniciaModal('modal-promocao');
+        })
+    </script>
+</body>
+
+</html>
