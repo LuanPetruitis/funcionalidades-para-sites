@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        div {
+            /* margin: auto; */
+            width: 50vw;
+            height: 50vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <canvas class="line-chart"></canvas>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <script>
+        var ctx = document.getElementsByClassName("line-chart");
+
+        // type, data e opitions
+
+        var chartGraph = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
+                datasets: [{
+                    label: "TAXA DE CLIQUES - 2017",
+                    data: [5, 10, 5, 14, 30, 29, 25, 22, 20, 40, 50, 55],
+                    borderWidth: 6,
+                    borderColor: 'rgba(77, 166, 253, 0.85)',
+                    backgroundColor: 'transparent'
+                }, {
+                    label: "TAXA DE CLIQUES - 2018",
+                    data: [0, 10, 15, 14, 20, 29, 29, 29, 30, 25, 31, 39],
+                    borderWidth: 6,
+                    borderColor: 'rgba(77, 70, 30, 0.85)',
+                    backgroundColor: 'transparent'
+                }]
+            }
+        });
+    </script>
+</body>
+
+</html>
