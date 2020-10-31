@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+    <style>
+        .content {
+            max-width: 400px;
+            max-height: 600px;
+            margin: auto;
+            background: #f3f3f3;
+            height: 450px;
+            padding: 2px;
+            border: 1px solid;
+        }
+        
+        .content h1 {
+            text-align: center;
+        }
+        
+        input[type=text] {
+            width: 65%;
+            height: 30px;
+            margin-bottom: 10px;
+        }
+        
+        input[type=button] {
+            border: none;
+            width: 30%;
+            float: right;
+            height: 35px;
+        }
+        
+        button:hover,
+        input[type=button]:hover {
+            background: #cccccc;
+        }
+        
+        button,
+        input[type=button] {
+            cursor: pointer;
+        }
+        
+        button {
+            float: right;
+            width: 25px;
+            padding: 5px;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding: 10px;
+            height: 250px;
+            background: #ffffff;
+            overflow-y: auto;
+        }
+        
+        li {
+            height: 40px;
+            margin: 15px 0 15px 0;
+            border-bottom: 1px solid;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="row">
+            <div class="col-12">
+                <h1>Lista de tarefas</h1>
+                <form>
+                    <input type="text" name="task" id="task" placeholder="Novo item..." />
+                    <input type="button" name="" value="Adicionar tarefa" onclick="addTask()" />
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="to-do-list-box">
+                    <ul id="myList">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var ul = document.getElementById('myList');
+        var li;
+        var itemId;
+        var item;
+
+        function addTask() {
+            if (document.getElementById("task").value != "") {
+                item = document.getElementById("task").value
+                itemId = ul.childElementCount;
+                li = createElement(item, itemId);
+                li.appendChild(createRemoveTaskBtn(itemId));
+                ul.appendChild(li);
+            }
+
+        }
+
+        function removeTask(itemId) {
+            for (i = 0; i < ul.children.length; i++) {
+                if (ul.children[i].getAttribute("index") == itemId) {
+                    ul.children[i].remove();
+                }
+            }
+        }
+
+        function createElement(itemValue, itemId) {
+            let li = document.createElement('li');
+            li.setAttribute("index", itemId);
+            li.appendChild(document.createTextNode(itemValue));
+            return li;
+        }
+
+        function createRemoveTaskBtn() {
+            let btn = document.createElement('button');
+            btn.setAttribute("onclick", "removeTask(" + itemId + ")");
+            btn.innerHTML = "X";
+            return btn;
+        }
+    </script>
+</body>
+
+</html>
