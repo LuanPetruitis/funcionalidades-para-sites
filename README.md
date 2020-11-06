@@ -30,6 +30,10 @@ Siga os passos abaixo para contribuir:
 
 7. Pronto, agora só aguardar a análise 🚀 
 
+## Desafios
+
+-Colocar barra de progresso no cronometro
+
 
 ## 📜 License
 
